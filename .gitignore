@@ -1,0 +1,7 @@
+#ignored files
+*
+!.gitignore
+!.bashrc
+!.bash_profile
+!.vimrc
+# the directory .vim should be here...
