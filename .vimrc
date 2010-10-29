@@ -1,4 +1,4 @@
-" Walt Javins vim settings <walt@javins.net>
+" javins vim settings <walt.javins.net>
 set nocompatible
 
 syntax on	" syntax hilighting on
