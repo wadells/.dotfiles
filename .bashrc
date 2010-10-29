@@ -1,13 +1,9 @@
 #!/bin/bash
-# Personal aliases and programs for Walt Javins 
+# Personal aliases and programs for javins 
 # <walt.javins.net>
 
-# System wide environment variables and startup programs are
-# in /etc/profile.  System wide aliases and functions are in
-# /etc/bashrc.
-
 # Colors
-############################################################
+########################################################################
 export TERM=xterm-color
 export GREP_OPTIONS='--color=auto' GREP_COLOR='1;32'
 export CLICOLOR=1 
@@ -21,25 +17,27 @@ BLU="\[\e[0;34m\]"
 
 if [ "$OS" = "linux" ] ; 
 then
-  # ls colors, see: http://www.linux-sxs.org/housekeeping/lscolors.html
-  export LS_COLORS='fi=0:di=34:ln=36:pi=93:bd=93:so=93:cd=93:ex=32:su=31:sg=31:tw=34:47:st=34:47'
-  alias ls='ls --color=auto' # For linux, etc	
+  	# ls colors, see: 
+  	# http://www.linux-sxs.org/housekeeping/lscolors.html
+  	export LS_COLORS='fi=0:di=34:ln=36:pi=93:bd=93:so=93:cd=93:ex=32:su=31:sg=31:tw=34:47:st=34:47'
+  	alias ls='ls --color=auto' # For linux, etc	
 else
-	# OS-X SPECIFIC - the -G command in OS-X is for colors, in Linux it's no groups
+	# OS-X SPECIFIC - the -G command in OS-X is for colors, in Linux 
+	# it's no groups
 	export LSCOLORS="fxgxDxDxcxDxDxbxbxeheh"
 	alias ls='ls -G'	
 fi
 
 # History
-############################################################
+########################################################################
 
-# Save lot of commands in the history
+# Save lots of commands in the history
 export HISTFILESIZE=999
 
 # Don't put duplicate lines in the history file
 export HISTCONTROL=ignoredups
 
-# A speedy way to access history, or specific commands in
+# My speedy way to access history, or specific commands in
 # history
 hist () {
 	if [ $# = 0 ]
@@ -50,30 +48,28 @@ hist () {
 	fi
 }
 
-# A profilet to find your most used commands
+# A profiler to find your most used commands
 alias hprofile="history | awk '{print \$2}' | awk 'BEGIN{FS=\"|\"}{print \$1}' | sort | uniq -c | sort -n | tail -n 20 | sort -nr"
 
 # Modified / New Commands
-############################################################
+########################################################################
 
-# To temporarily bypass an alias, proceed the command with a
-# \ EG:  the ls command is aliased, but to use the normal ls 
-# command you would type \ls
+# To temporarily bypass an alias, proceed the command with a \
+# EG: the ls command is aliased, but to use the normal ls command you 
+# would type \ls
 
-# Dummy protection from accidentally deleting files and 
-# folders
+# Dummy protection from accidentally deleting files and folders
 alias cp="cp -i"
 alias mv="mv -i"
 alias rm="rm -i"
 
-# alias smul="open -a Smultron"
 alias eclipse="open -a Eclipse"
 alias la="ls -A"
 alias ll="ls -l"
 alias ..="cd .."
 
-# My point and click editor of choice with builtin file 
-# creation if the file does not yet exist
+# My point and click editor of choice with builtin file creation if the
+# file does not yet exist
 smul () {
 	if [ ! -f $1 ]
 	then
@@ -85,10 +81,10 @@ smul () {
 	fi
 }
 
-# Latex commands
+# LaTeX commands
 alias tex="pdflatex"
 
-clean () {
+texclean () {
     if [ $1 = "-f" ]
 	then
 		rm -f *.log *.aux
@@ -97,8 +93,7 @@ clean () {
 	fi
 }
 
-# Bookmarking ultility from
-# http://blog.infinitered.com/entries/show/4
+# Bookmarking utility from: http://blog.infinitered.com/entries/show/4
 
 # bash option so that no '$' is required when cd-ing
 shopt -s cdable_vars
@@ -112,7 +107,10 @@ source ~/.dirs  			# include bookmarks
 
 # command to add new bookmark
 mark () {
-	command sed "/!$/d" ~/.dirs > ~/.dirs1; \mv ~/.dirs1 ~/.dirs; echo "$@"=\"`pwd`\" >> ~/.dirs; source ~/.dirs ; 
+	command sed "/!$/d" ~/.dirs > ~/.dirs1;
+	\mv ~/.dirs1 ~/.dirs; 
+	echo "$@"=\"`pwd`\" >> ~/.dirs;
+	source ~/.dirs; 
 }
 
 # command to search/display current bookmarks
@@ -128,8 +126,8 @@ show () {
 # Prompt
 ############################################################
 
-# A function to set the color based on the return value of 
-# the previous command.
+# A function to set the color based on the return value of the previous
+# command.
 errcolor () {
     if [ $1 = "0" ]
     then
