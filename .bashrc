@@ -68,6 +68,9 @@ alias la="ls -A"
 alias ll="ls -l"
 alias ..="cd .."
 
+# For now. Remove to run python 2.x. 
+alias python="python3"
+
 # My point and click editor of choice with builtin file creation if the
 # file does not yet exist
 smul () {
