@@ -84,6 +84,9 @@ smul () {
 	fi
 }
 
+# git completion
+source .git-completion.bash
+
 # LaTeX commands
 alias tex="pdflatex"
 
