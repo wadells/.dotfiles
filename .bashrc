@@ -6,14 +6,17 @@
 ########################################################################
 export TERM=xterm-color
 export GREP_OPTIONS='--color=auto' GREP_COLOR='1;32'
+export ACK_OPTIONS='--color-match=green --color-filename=magenta --color-lineno=blue'
 export CLICOLOR=1 
 
 NRML="\[\e[0m\]"
 WHITE="\[\e[0;37m\]"
 RED="\[\e[1;31m\]"
 GRN="\[\e[1;32m\]"
-CYAN="\[\e[0;36m\]"
+CYN="\[\e[0;36m\]"
 BLU="\[\e[0;34m\]"
+
+
 
 if [ "$OS" = "linux" ] ; 
 then
@@ -85,7 +88,7 @@ smul () {
 }
 
 # git completion
-source .git-completion.bash
+source ~/.git-completion.bash
 
 # LaTeX commands
 alias tex="pdflatex"
@@ -96,36 +99,6 @@ texclean () {
 		rm -f *.log *.aux
 	else
 		rm *.log *.aux
-	fi
-}
-
-# Bookmarking utility from: http://blog.infinitered.com/entries/show/4
-
-# bash option so that no '$' is required when cd-ing
-shopt -s cdable_vars
-
-# initialization for the 'save' file
-if [ ! -f ~/.dirs ]
-then   						# if bookmark directory doesn't 
-	touch ~/.dirs 		    # exist, create it
-fi
-source ~/.dirs  			# include bookmarks
-
-# command to add new bookmark
-mark () {
-	command sed "/!$/d" ~/.dirs > ~/.dirs1;
-	\mv ~/.dirs1 ~/.dirs; 
-	echo "$@"=\"`pwd`\" >> ~/.dirs;
-	source ~/.dirs; 
-}
-
-# command to search/display current bookmarks
-show () {
-	if [ $# = 0 ]
-	then
-		cat ~/.dirs
-	else
-		cat ~/.dirs | grep $*
 	fi
 }
 
@@ -146,8 +119,8 @@ errcolor () {
 # My personal prompt!
 case $TERM in
     xterm*) # xterm prompt
-        PROMPT_COMMAND='PS1="${CYAN}\u${NRML}@${BLU}\h ${NRML}[ \W ]`errcolor $?`\$${NRML} ";'
+        PROMPT_COMMAND='PS1="${CYN}\u${NRML}@${BLU}\h ${NRML}[ \W ]`errcolor $?`\$${NRML} ";'
         ;;
     *) # catch all prompt
-        PROMPT_COMMAND='PS1="${CYAN}\u${NRML}@${BLU}\h ${NRML}[ \W ]`errcolor $?`\$${NRML} ";'
+        PROMPT_COMMAND='PS1="${CYN}\u${NRML}@${BLU}\h ${NRML}[ \W ]`errcolor $?`\$${NRML} ";'
     esac
