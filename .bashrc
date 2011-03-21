@@ -7,7 +7,8 @@
 export TERM=xterm-color
 export GREP_OPTIONS='--color=auto' GREP_COLOR='1;32'
 export ACK_OPTIONS='--color-match=green --color-filename=magenta --color-lineno=blue'
-export CLICOLOR=1 
+export CLICOLOR=1
+export EDITOR=vim # should not be in color section 
 
 NRML="\[\e[0m\]"
 WHITE="\[\e[0;37m\]"
