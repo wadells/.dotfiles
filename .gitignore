@@ -5,4 +5,5 @@
 !.bash_profile
 !.vimrc
 !.git-completion.bash
+!.screenrc
 # the directory .vim should be here...

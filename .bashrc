@@ -19,8 +19,6 @@ GRN="\[\e[1;32m\]"
 CYN="\[\e[0;36m\]"
 BLU="\[\e[0;34m\]"
 
-
-
 if [ "$OS" = "linux" ] ; 
 then
   	# ls colors, see: 
@@ -76,19 +74,6 @@ alias ..="cd .."
 
 # For now. Remove to run python 2.x. 
 alias python="python3"
-
-# My point and click editor of choice with builtin file creation if the
-# file does not yet exist
-smul () {
-	if [ ! -f $1 ]
-	then
-    	echo "creating $1..."
-    	touch $1
-    	open -a Smultron $1
-    else
-       	open -a Smultron $1
-	fi
-}
 
 # git completion
 source ~/.git-completion.bash
