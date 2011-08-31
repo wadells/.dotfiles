@@ -28,8 +28,7 @@ then
 else
 	# OS-X SPECIFIC - the -G command in OS-X is for colors, in Linux 
 	# it's no groups
-	export LSCOLORS="fxgxDxDxcxDxDxbxbxeheh"
-	alias ls='ls -G'	
+	LSCOLORS=dxfxcxdxbxegedabagacad
 fi
 
 # History
@@ -104,11 +103,9 @@ errcolor () {
     fi
 }
 
-# My personal prompt!
-case $TERM in
-    xterm*) # xterm prompt
-        PROMPT_COMMAND='PS1="${CYN}\u${NRML}@${BLU}\h ${NRML}[ \W ]`errcolor $?`\$${NRML} ";'
-        ;;
-    *) # catch all prompt
-        PROMPT_COMMAND='PS1="${CYN}\u${NRML}@${BLU}\h ${NRML}[ \W ]`errcolor $?`\$${NRML} ";'
-    esac
+# set a fancy prompt (non-color, unless we know we "want" color)
+case "$TERM" in
+	xterm-color) 	PS1="${GRN}\u@\h${NRML}:${BLU}\w`errcolor $?`\$${NRML} "
+	;;
+	*) 				PS1="\u@\h:\w\$ "
+esac
