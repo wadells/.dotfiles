@@ -6,4 +6,6 @@
 !.vimrc
 !.git-completion.bash
 !.screenrc
+!.ssh/
+!.ssh/config
 # the directory .vim should be here...
