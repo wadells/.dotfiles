@@ -4,7 +4,7 @@
 
 # Environment Variables (perhaps these should be in .bash_profile?)
 export EDITOR=vim
-export GREP_OPTIONS='--color=auto' GREP_COLOR='1;32'
+export GREP_OPTIONS='--color=auto -E' GREP_COLOR='1;32'
 export ACK_OPTIONS='--color-match=green --color-filename=magenta --color-lineno=blue'
 
 # Colors
