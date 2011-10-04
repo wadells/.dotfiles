@@ -1,3 +1,13 @@
+" Learn vim better - these can be reenabled once I'm efficient
+inoremap  <Up>     <NOP>
+inoremap  <Down>   <NOP>
+inoremap  <Left>   <NOP>
+inoremap  <Right>  <NOP>
+noremap   <Up>     <NOP>
+noremap   <Down>   <NOP>
+noremap   <Left>   <NOP>
+noremap   <Right>  <NOP>
+
 " Misc general settings
 syntax on
 set background=dark
@@ -10,10 +20,10 @@ set nowrap        		" don't wrap lines
 "set backspace=indent,eol,start	" allow backspacing over everything in insert mode
 
 " Spacing settings
-set tabstop=4     		" a tab is four spaces
+set tabstop=2     		" a tab is four spaces
 set autoindent    		" always set autoindenting on
 set copyindent    		" copy the previous indentation on autoindenting
-set shiftwidth=4  		" number of spaces to use for autoindenting
+set shiftwidth=2  		" number of spaces to use for autoindenting
 set shiftround    		" use multiple of shiftwidth when indenting with '<' and '>'
 set showmatch     		" set show matching parenthesis
 set smarttab      		" insert tabs on the start of a line according to shiftwidth, not tabstop
@@ -33,5 +43,5 @@ set incsearch     		" show search matches as you type
 " Uncomment the following to have Vim load indentation rules and plugins
 " according to the detected filetype.
 if has("autocmd")
-  filetype plugin indent on
+	filetype plugin indent on
 endif
