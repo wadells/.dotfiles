@@ -1,4 +1,4 @@
-" Learn vim better - these can be reenabled once I'm efficient
+" Learn vim the hard way - these can be reenabled once I'm efficient
 inoremap  <Up>     <NOP>
 inoremap  <Down>   <NOP>
 inoremap  <Left>   <NOP>
@@ -20,10 +20,10 @@ set nowrap        		" don't wrap lines
 "set backspace=indent,eol,start	" allow backspacing over everything in insert mode
 
 " Spacing settings
-set tabstop=2     		" a tab is four spaces
+set tabstop=8     		" a tab is eight, acording to isilon spaces
 set autoindent    		" always set autoindenting on
 set copyindent    		" copy the previous indentation on autoindenting
-set shiftwidth=2  		" number of spaces to use for autoindenting
+set shiftwidth=8  		" number of spaces to use for autoindenting
 set shiftround    		" use multiple of shiftwidth when indenting with '<' and '>'
 set showmatch     		" set show matching parenthesis
 set smarttab      		" insert tabs on the start of a line according to shiftwidth, not tabstop
