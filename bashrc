@@ -23,7 +23,6 @@ if [ -x /usr/bin/dircolors ]; then
 	alias ls='ls --color=auto'
 	alias dir='dir --color=auto'
 	export GREP_OPTIONS='--color=auto -E' GREP_COLOR='1;32'
-	export ACK_OPTIONS='--color-match=green --color-filename=magenta --color-lineno=blue'
 fi
 			    
 

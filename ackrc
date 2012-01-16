@@ -1,0 +1,7 @@
+# friendly colors
+--color-match=bold green
+--color-filename=green
+
+# for searching irc logs
+--type-set
+log=.log
