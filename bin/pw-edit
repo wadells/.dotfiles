@@ -1,0 +1,48 @@
+#!/bin/sh
+
+# check that $PW_FILE exists
+PW_FILE_NAME=".pw.txt"
+PW_FILE="$HOME/$PW_FILE_NAME"
+if [ ! -f $PW_FILE ]
+then
+	echo "No such password file exists: $PW_FILE" >&2
+	exit 1;
+fi
+
+# make working files
+TMP_DIR=`mktemp -d --tmpdir pw.XXXXXXXX`
+PLAINTEXT_FILE="$TMP_DIR/plaintext"
+BACKUP_FILE="$TMP_DIR/backup"
+
+# lock down permissions 600 so no one snoops our passwords
+chmod 700 $TMP_DIR
+touch $PLAINTEXT_FILE
+chmod 600 $PLAINTEXT_FILE
+
+# edit the tempory plaintext file
+gpg -d $PW_FILE > $PLAINTEXT_FILE 
+vim $PLAINTEXT_FILE
+
+# if the edit was sucessful then reencrypt and copy over the original file
+if [ $? -eq 0 ]
+then
+	cp $PW_FILE $BACKUP_FILE 
+	gpg --yes -eao $PW_FILE -r Walt $PLAINTEXT_FILE	
+	if [ $? -ne 0 ] 
+	then
+		echo "Unable to copy edited password file to: $PW_FILE"
+		exit 1;
+	fi
+fi
+
+# clean up
+
+rm -rf $TMP_DIR
+
+if [ -f $TMP_DIR ]
+then
+	echo "Could not delete tempory file: $TMP_FILE \nPlease manually remove this file as it contains plaintext passwords." >&2
+	exit 1
+fi
+
+exit 0
