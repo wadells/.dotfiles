@@ -18,6 +18,7 @@ set showmatch			" Show matching brackets.
 set number        		" always show line numbers
 set nowrap        		" don't wrap lines
 "set backspace=indent,eol,start	" allow backspacing over everything in insert mode
+set pastetoggle=<F2>
 
 " Spacing settings
 set tabstop=8     		" a tab is eight, acording to isilon spaces
