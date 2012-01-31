@@ -4,29 +4,25 @@ SAVEHIST=100000
 setopt appendhistory 
 setopt nomatch
 
-bindkey -v # vi mode editing
+export GREP_OPTIONS='--color=auto'
+export GREP_COLOR='1;32'
 
-VIMODE='[i]'
-function zle-keymap-select {
-	VIMODE="${${KEYMAP/vicmd/[n]}/(main|viins)/[i]}"
-	zle reset-prompt
-}
-
-zle -N zle-keymap-select
-
-function regen_prompt {
+function regen-prompt {
 	local wingding="%(?..%B%F{red})\$%(?..%b%f)"
 	PROMPT="%F{cyan}%n%f@%F{blue}%m%f:%B%F{blue}%~%f%b$wingding "
 	local return_code="%(?..%F{red}%? ↵%f)"
 	RPROMPT="${return_code}"
 }
 
-function change_title {}
+function change-title {}
 
 function precmd {
-	change_title
-	regen_prompt
+	change-title
+	regen-prompt
 }
+
+
+source ~/.dotfiles/vi-mode.zsh
 
 # The following lines were added by compinstall
 zstyle :compinstall filename '/home/wjavins/.zshrc'
