@@ -1,12 +1,6 @@
-# wjavins' Screen Settings
-
 startup_message off		# don't display the copyright page
 term xterm-color		# act like xterm-color
 termcapinfo xterm* ti@:te@	# fix scrolling
 altscreen on			# exit out of vim without messing up the scroll buffer
 autodetach on			# auto detach on failed ssh session
 vbell off			# woof woof, wtf
-
-# status bar
-# hardstatus alwayslastline                                                                                                                          
-# hardstatus string '%{= kG}[ %{G}%H %{g}][%= %{= kw}%?%-Lw%?%{r}(%{W}%n*%f%t%?(%u)%?%{r})%{w}%?%+Lw%?%?%= %{g}][%{B} %d/%m %{W}%c %{g}]'
