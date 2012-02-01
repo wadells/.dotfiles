@@ -1,32 +1,69 @@
 #!/usr/bin/python
-import optparse
+from optparse import OptionParser
 import os
 import os.path
 import sys
 import shutil
 
-usage = "Install files to make $HOME a bit more like home."
+desc = """Making $HOME a bit more like home."""
+parser = OptionParser(epilog=desc)
+parser.add_option('-b', '--backup', action='store_true', dest='backup',
+									help="""make backups of current dotfiles (overrides '--overwrite')""")
+parser.add_option('-o', '--overwrite', action='store_false', dest='backup',
+									help="""overwrite current dotfiles (overrides '--backup')""")
 
 home_dir =  os.getenv("HOME")
 dotfiles_dir = home_dir + "/.dotfiles"
 backup_dir = dotfiles_dir + "/backup"
 
-def link_file( file ):
-	link_src = home_dir + "/." + file
-	link_dst = dotfiles_dir + "/" + file
-	if backup_desired:
-		if os.path.exists ( link_src ):
-			backup_file = backup_dir + "/" + file
-			shutil.move( link_src, backup_file ) 
-	symlink( link_dst, link_src )
+def link( file ):
+	src = home_dir + "/." + file
+	dst = dotfiles_dir + "/" + file
+	os.symlink( dst, src )
+
+def backup( file ):
+	src = home_dir + "/." + file
+	dst = backup_dir + "/" + file
+	if os.path.exists ( src ):
+		shutil.move( src, dst ) 
 
 
-if not os.path.exists( dotfiles_dir ):
-	error_msg = "Cannot install dotfiles: " + dotfiles_dir + " does not exist."
-	print >> sys.stderr, error_msg
-	sys.exit( 2 )
+def prompt_backup():
+	print( "Would you like to make a backup of files that will be overwritten?" )
+	print( "Backups will be made in: " + backup_dir )
+	while True:
+		ans = raw_input("y/n/q(uit): ")
+		first_char = ans[0].lower()
+		if (first_char == 'q'):
+			sys.exit( 0 )
+		elif first_char == 'y':
+			return True
+		elif first_char == 'n':
+			return False
+		else:
+			print( "Response unrecognized: " + ans )
 
-print( "Would you like to make a backup of dotfiles that will be overwritten?" )
-print( "Copies will be made in: " + backup_dir )
-print( "(Yes, No, Abort): " )
+def main():
+	if not os.path.exists( dotfiles_dir ):
+		error_msg = "Cannot install dotfiles: " + dotfiles_dir + " does not exist."
+		print >> sys.stderr, error_msg
+		sys.exit( 2 )
 
+	(options, args) = parser.parse_args()
+	if options.backup is None:
+		options.backup = prompt_backup()
+	
+	if options.backup:
+		if not os.path.exists( backup_dir ):
+			os.makedirs( backup_dir )
+
+	for file in os.listdir( dotfiles_dir ):
+		if file in [ '.git', '.gitignore', 'install.py' ]:
+			continue
+		if options.backup:
+			backup( file )
+		link( file )
+		print "intstalled ~/." + file
+
+if (__name__ == "__main__"):
+	main()
