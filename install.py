@@ -16,6 +16,15 @@ home_dir =  os.getenv("HOME")
 dotfiles_dir = home_dir + "/.dotfiles"
 backup_dir = dotfiles_dir + "/backup"
 
+def delete( file ):
+	file = home_dir + "/." + file
+	if os.path.exists( file ):
+		if os.path.islink( file ):
+			os.unlink( file )
+		else:
+			shutil.rmtree( file )
+
+
 def link( file ):
 	src = home_dir + "/." + file
 	dst = dotfiles_dir + "/" + file
@@ -26,7 +35,6 @@ def backup( file ):
 	dst = backup_dir + "/" + file
 	if os.path.exists ( src ):
 		shutil.move( src, dst ) 
-
 
 def prompt_backup():
 	print( "Would you like to make a backup of files that will be overwritten?" )
@@ -62,6 +70,8 @@ def main():
 			continue
 		if options.backup:
 			backup( file )
+		else:
+			delete( file )
 		link( file )
 		print "intstalled ~/." + file
 
