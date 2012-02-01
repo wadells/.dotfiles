@@ -1,6 +1,6 @@
 HISTFILE=~/.histfile
-HISTSIZE=10000
-SAVEHIST=100000
+HISTSIZE=1000
+SAVEHIST=10000
 setopt appendhistory 
 setopt nomatch
 
