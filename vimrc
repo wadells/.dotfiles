@@ -22,17 +22,20 @@ set backupdir=/tmp		" store backups in /tmp
 set directory=/tmp		" store swap files in /tmp too
 
 " hilight when we go over 80 chars
-highlight OverLength ctermbg=darkred
-match OverLength /\%80v.*/
+highlight OverLength term=reverse ctermbg=red
+match OverLength /\%>80v/
+
+" hilight trailing whitespace
+highlight TrailingSpace term=reverse ctermbg=red
+match TrailingSpace /\s\+$/
 
 " Spacing settings
-set tabstop=8     		" a tab is eight, acording to isilon spaces
+set tabstop=8 shiftwidth=4    	" isilon style
 set autoindent    		" always set autoindenting on
 set copyindent    		" mainain previous indentation
-set shiftwidth=8  		" number of spaces to use for autoindenting
 set shiftround    		" use shiftwidth with '<' and '>'
 set showmatch     		" set show matching parenthesis
-set smarttab   			
+set smarttab
 
 " Search tweaks
 set ignorecase    		" ignore case when searching
