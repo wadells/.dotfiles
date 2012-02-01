@@ -66,7 +66,7 @@ def main():
 			os.makedirs( backup_dir )
 
 	for file in os.listdir( dotfiles_dir ):
-		if file in [ '.git', '.gitignore', 'install.py' ]:
+		if file in [ '.git', '.gitignore', 'install.py', 'bin', 'zsh', 'backup' ]:
 			continue
 		if options.backup:
 			backup( file )
