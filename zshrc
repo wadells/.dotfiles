@@ -25,8 +25,7 @@ function precmd {
 	regen-prompt
 }
 
-
-source ~/.dotfiles/vi-mode.zsh
+source ~/.zsh/vi-mode.zsh
 
 # add my scripts to the path
 export PATH=$PATH:~/.dotfiles/bin
