@@ -17,15 +17,13 @@ dotfiles_dir = home_dir + "/.dotfiles"
 backup_dir = dotfiles_dir + "/backup"
 ignored_files = [ '.git', '.gitignore', 'install.py', 'bin', 'zsh', 'backup' ]
 
-
-
 def delete( file ):
 	file = home_dir + "/." + file
 	if os.path.exists( file ):
-		if os.path.islink( file ):
-			os.unlink( file )
-		else:
+		if os.path.isdir( file ):
 			shutil.rmtree( file )
+		else:
+			os.unlink( file )
 
 def link( file ):
 	src = home_dir + "/." + file
