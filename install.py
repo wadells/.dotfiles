@@ -12,13 +12,13 @@ parser.add_option('-b', '--backup', action='store_true', dest='backup',
 parser.add_option('-o', '--overwrite', action='store_false', dest='backup',
 		  help="overwrite current dotfiles (overrides '-b')")
 
-home_dir =  os.getenv("HOME")
-dotfiles_dir = home_dir + "/.dotfiles"
+home_dir =  os.getenv("HOME") # make this an option?
+dotfiles_dir = ".dotfiles"
 backup_dir = dotfiles_dir + "/backup"
 ignored_files = [ '.git', '.gitignore', 'install.py', 'bin', 'zsh', 'backup' ]
 
 def delete( file ):
-	file = home_dir + "/." + file
+	file = "." + file
 	if os.path.exists( file ):
 		if os.path.isdir( file ):
 			shutil.rmtree( file )
@@ -26,12 +26,12 @@ def delete( file ):
 			os.unlink( file )
 
 def link( file ):
-	src = home_dir + "/." + file
+	src = "." + file
 	dst = dotfiles_dir + "/" + file
 	os.symlink( dst, src )
 
 def backup( file ):
-	src = home_dir + "/." + file
+	src = "." + file
 	dst = backup_dir + "/" + file
 	if os.path.exists ( src ):
 		shutil.move( src, dst ) 
@@ -52,6 +52,7 @@ def prompt_backup():
 			print( "Response unrecognized: " + ans )
 
 def main():
+	os.chdir( home_dir )
 	if not os.path.exists( dotfiles_dir ):
 		error_msg = "Cannot install dotfiles: " + dotfiles_dir + \
 			    " does not exist."
