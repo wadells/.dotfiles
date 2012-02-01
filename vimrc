@@ -21,6 +21,10 @@ set pastetoggle=<F2>		" hit <F2> to toggle paste mode
 set backupdir=/tmp		" store backups in /tmp
 set directory=/tmp		" store swap files in /tmp too
 
+" hilight when we go over 80 chars
+highlight OverLength ctermbg=darkred
+match OverLength /\%80v.*/
+
 " Spacing settings
 set tabstop=8     		" a tab is eight, acording to isilon spaces
 set autoindent    		" always set autoindenting on
