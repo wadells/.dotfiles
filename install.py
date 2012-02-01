@@ -8,13 +8,16 @@ import shutil
 desc = """Making $HOME a bit more like home."""
 parser = OptionParser(epilog=desc)
 parser.add_option('-b', '--backup', action='store_true', dest='backup',
-									help="""make backups of current dotfiles (overrides '--overwrite')""")
+		  help="make backups of current dotfiles (overrides '-o')")
 parser.add_option('-o', '--overwrite', action='store_false', dest='backup',
-									help="""overwrite current dotfiles (overrides '--backup')""")
+		  help="overwrite current dotfiles (overrides '-b')")
 
 home_dir =  os.getenv("HOME")
 dotfiles_dir = home_dir + "/.dotfiles"
 backup_dir = dotfiles_dir + "/backup"
+ignored_files = [ '.git', '.gitignore', 'install.py', 'bin', 'zsh', 'backup' ]
+
+
 
 def delete( file ):
 	file = home_dir + "/." + file
@@ -23,7 +26,6 @@ def delete( file ):
 			os.unlink( file )
 		else:
 			shutil.rmtree( file )
-
 
 def link( file ):
 	src = home_dir + "/." + file
@@ -53,7 +55,8 @@ def prompt_backup():
 
 def main():
 	if not os.path.exists( dotfiles_dir ):
-		error_msg = "Cannot install dotfiles: " + dotfiles_dir + " does not exist."
+		error_msg = "Cannot install dotfiles: " + dotfiles_dir + \
+			    " does not exist."
 		print >> sys.stderr, error_msg
 		sys.exit( 2 )
 
@@ -66,7 +69,7 @@ def main():
 			os.makedirs( backup_dir )
 
 	for file in os.listdir( dotfiles_dir ):
-		if file in [ '.git', '.gitignore', 'install.py', 'bin', 'zsh', 'backup' ]:
+		if file in ignored_files:
 			continue
 		if options.backup:
 			backup( file )
