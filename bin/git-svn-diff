@@ -1,0 +1,59 @@
+#!/usr/bin/perl
+#
+# Generate an SVN-compatible diff against the tip of the tracking branch
+# 
+# based off of https://gist.github.com/833214
+
+$svn_url = `git svn info | grep URL`;
+$on_branch = $svn_url =~ m/branch/;
+
+$svn_remote = "";
+if ( $on_branch ) {
+    $svn_url =~ s/.*\/branches\///g;
+    $svn_remote = $svn_url;
+} else {
+    $svn_remote = `git config --get svn-remote.svn.fetch`;
+    $svn_remote=~ s/.*:refs\/remotes\///;
+}
+
+# find the git commit corresponding to svn HEAD
+$git_commit = `git rev-list --date-order --max-count=1 $svn_remote`;
+
+# find the svn revision that HEAD is at
+$svn_revision = `git svn find-rev $git_commit`;
+$svn_revision =~ s/\n//g;
+
+# collect the rough git diff
+$diff = `git diff --no-prefix $git_commit \$*`;
+
+# Now cleanup the git diff to make it like a svn diff
+$diff =~ s/new file mode.*\n//mg;
+
+# append (working copy) to added files lines
+$diff =~ s/^\+\+\+ .*/$&        (working copy)/mg;
+
+# append (revision XXX) to removed files lines
+$diff =~ s/^--- .*/$&        (revision $svn_revision)/mg;
+
+# for new files, git refrences them as:
+#
+#  --- /dev/null
+#  +++ dir/file.ext
+#
+# but the script has already edited the lines to look like:
+#
+#  --- /dev/null        (revision XXX)
+#  +++ dir/file.ext        (working copy)
+#
+# the following changes these lines to the svn style:
+#
+# --- dir/file.ext        (revision 0)
+# +++ dir/file.ext        (revision 0)
+#
+$diff =~ s/--- \/dev\/null.*\n\+\+\+(.*)\(.*/--- $1(revision 0)\n+++ $1(revision 0)/mg;
+
+# switch git style header for svn style "Index"
+$diff =~ s/^diff --git [^[:space:]]*/Index:/mg;
+$diff =~ s/^index.*/===================================================================/mg;
+
+print $diff;
