@@ -2,6 +2,10 @@
 --color-match=bold green
 --color-filename=green
 
-# for searching irc logs
+# for searching irc logs etc
 --type-set
 log=.log
+
+# for tmgr lists
+--type-set
+list=.list
