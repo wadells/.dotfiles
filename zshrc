@@ -1,7 +1,7 @@
 HISTFILE=~/.histfile
 HISTSIZE=1000
 SAVEHIST=10000
-setopt appendhistory 
+setopt appendhistory
 setopt nomatch
 
 # enable color support of ls and also add handy aliases
@@ -10,6 +10,8 @@ if [ -x /usr/bin/dircolors ]; then
         alias ls='ls --color=auto'
         export GREP_OPTIONS='--color=auto -E' GREP_COLOR='1;32'
 fi
+
+source ~/.dotfiles/zsh/vi-mode.zsh
 
 function regen-prompt {
 	local wingding="%(?..%B%F{red})\$%(?..%b%f)"
@@ -24,11 +26,6 @@ function precmd {
 	change-title
 	regen-prompt
 }
-
-source ~/.dotfiles/zsh/vi-mode.zsh
-
-# add my scripts to the path
-export PATH=$PATH:~/.dotfiles/bin
 
 # check for local configs that needn't be in the .dotfile repo
 if [ -f ~/.zshrc.local ]; then
