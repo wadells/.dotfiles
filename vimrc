@@ -11,6 +11,7 @@ noremap   <Right>  <NOP>
 " Colors
 syntax enable
 set background=dark
+let g:solarized_termtrans = 1
 colorscheme solarized
 
 " Misc settings
