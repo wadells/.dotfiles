@@ -34,7 +34,7 @@ def backup( file ):
 	src = "." + file
 	dst = backup_dir + "/" + file
 	if os.path.exists ( src ):
-		shutil.move( src, dst ) 
+		shutil.move( src, dst )
 
 def prompt_backup():
 	print( "Would you like to make a backup of files that will be overwritten?" )
@@ -62,7 +62,7 @@ def main():
 	(options, args) = parser.parse_args()
 	if options.backup is None:
 		options.backup = prompt_backup()
-	
+
 	if options.backup:
 		if not os.path.exists( backup_dir ):
 			os.makedirs( backup_dir )
