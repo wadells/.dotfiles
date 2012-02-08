@@ -1,6 +1,6 @@
 # friendly colors
---color-match=bold green
---color-filename=green
+--color-match=red
+--color-filename=bold cyan
 
 # for searching irc logs etc
 --type-set
