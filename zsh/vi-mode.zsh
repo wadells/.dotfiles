@@ -5,8 +5,7 @@ autoload -U colors && colors
 # Allow command line editing in an external editor.
 autoload -Uz edit-command-line
 
-MODE_INDICATOR="%{$fg_bold[green]%}<%{$resetcolor%}%{$fg[green]%}<<%{$reset_color%}"
-
+MODE_INDICATOR="%{$fg[green]%}<<<%{$reset_color%}"
 RPROMPT_ORIG=$RPROMPT
 
 function zle-line-init zle-keymap-select {

@@ -1,6 +1,6 @@
 function regen-prompt {
 	local wingding="%(?..%B%F{red})\$%(?..%b%f)"
-	PROMPT="%F{cyan}%n%f@%F{blue}%m%f:%B%F{blue}%~%f%b$wingding "
+	PROMPT="%F{cyan}%n%f@%F{cyan}%m%f:%F{blue}%~%f$wingding "
 	local return_code="%(?..%F{red}%? ↵%f)"
 	RPROMPT="${return_code}"
 }
