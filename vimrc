@@ -34,11 +34,7 @@ highlight TrailingSpace term=reverse ctermbg=red
 match TrailingSpace /\s\+$/
 
 " Spacing settings
-set tabstop=8 shiftwidth=4    	" isilon style
-set autoindent    		" always set autoindenting on
-set copyindent    		" mainain previous indentation
 set shiftround    		" use shiftwidth with '<' and '>'
-set showmatch     		" set show matching parenthesis
 set smarttab
 
 " Search tweaks
