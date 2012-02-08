@@ -1,6 +1,6 @@
-if ls --color -d . > /dev/null; then
+if ls --color -d . > /dev/null 2>&1; then
     alias ls='ls --color=auto'
-elif ls -G -d > /dev/null; then
+elif ls -G -d . > /dev/null 2>&1; then
     alias ls='ls -G'
 fi
 
