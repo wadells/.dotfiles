@@ -8,9 +8,12 @@ noremap   <Down>   <NOP>
 noremap   <Left>   <NOP>
 noremap   <Right>  <NOP>
 
-" Misc general settings
-syntax on
+" Colors
+syntax enable
 set background=dark
+colorscheme solarized
+
+" Misc settings
 set showcmd			" Show (partial) command in status line.
 set showmatch			" Show matching brackets.
 "set hidden			" Hide buffers when they are abandoned
