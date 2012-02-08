@@ -76,3 +76,6 @@ if !exists("no_plugin_maps") && !exists("no_pep8_maps")
         noremap! <buffer> <F6> <Esc>:call Pep8()<CR>
     endif
 endif
+
+" run pep8 before allowing us to write out to a file
+autocmd BufWritePost * call Pep8()
