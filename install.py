@@ -20,7 +20,7 @@ ignored_files = [ '.git', '.gitignore', 'install.py', 'bin', 'zsh', 'backup' ]
 def delete( file ):
 	file = "." + file
 	if os.path.exists( file ):
-		if os.path.isdir( file ):
+		if os.path.isdir( file ) and not os.path.islink( file ):
 			shutil.rmtree( file )
 		else:
 			os.unlink( file )
