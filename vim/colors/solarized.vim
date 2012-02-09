@@ -564,7 +564,11 @@ endif
 " note that link syntax to avoid duplicate configuration doesn't work with the
 " exe compiled formats
 
-exe "hi! Normal"         .s:fmt_none   .s:fg_base0  .s:bg_back
+" wjavins - the following line did not sucessfully bold the text when $TERM
+" was set to xterm-color on my mbp running vim 7.2. The 2nd line is my adjustment
+" that correctly sets colors, despite being static
+"exe "hi! Normal"         .s:fmt_none   .s:fg_base0  .s:bg_back
+hi Normal term=NONE cterm=NONE term=bold cterm=bold ctermbg=NONE ctermfg=4*
 
 exe "hi! Comment"        .s:fmt_ital   .s:fg_base01 .s:bg_none
 "       *Comment         any comment
@@ -689,7 +693,7 @@ exe "hi! MatchParen"     .s:fmt_bold   .s:fg_red    .s:bg_base01
 "}}}
 " vim syntax highlighting "{{{
 " ---------------------------------------------------------------------
-exe "hi! vimLineComment" . s:fg_base01 .s:bg_none   .s:fmt_ital
+"exe "hi! vimLineComment" . s:fg_base01 .s:bg_none   .s:fmt_ital
 exe "hi! vimCommentString".s:fg_violet .s:bg_none   .s:fmt_none
 hi! link vimVar Identifier
 hi! link vimFunc Function
