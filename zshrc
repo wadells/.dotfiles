@@ -15,7 +15,7 @@ function precmd {
 for config_file (~/.dotfiles/zsh/*.zsh) source $config_file
 
 # The following lines were added by compinstall
-zstyle :compinstall filename '/home/wjavins/.zshrc'
+zstyle :compinstall filename "$HOME/.zshrc"
 
 autoload -Uz compinit
 compinit
