@@ -1,1 +1,3 @@
 backup/
+irssi/*
+!irssi/solarized.theme
