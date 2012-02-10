@@ -25,10 +25,6 @@ set pastetoggle=<F2>		" hit <F2> to toggle paste mode
 set backupdir=/tmp		" store backups in /tmp
 set directory=/tmp		" store swap files in /tmp too
 
-" hilight when we go over 80 chars
-highlight OverLength term=reverse ctermbg=red
-match OverLength /\%>80v/
-
 " hilight trailing whitespace
 highlight TrailingSpace term=reverse ctermbg=red
 match TrailingSpace /\s\+$/
