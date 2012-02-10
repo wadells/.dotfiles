@@ -43,6 +43,10 @@ set smartcase     		" use upper case hints though
 set hlsearch      		" highlight search terms
 set incsearch     		" show search matches as you type
 
+" Fold with spacebar
+nnoremap <silent> <Space> @=(foldlevel('.')?'za':"\<Space>")<CR>
+vnoremap <Space> zf
+
 " Uncomment the following to have Vim jump to the last position when
 " reopening a file
 if has("autocmd")
