@@ -627,7 +627,7 @@ exe "hi! Error"          .s:fmt_bold   .s:fg_red    .s:bg_none
 exe "hi! Todo"           .s:fmt_bold   .s:fg_magenta.s:bg_none
 "       *Todo            anything that needs extra attention; mostly the
 "                        keywords TODO FIXME and XXX
-"
+
 "}}}
 " Extended highlighting "{{{
 " ---------------------------------------------------------------------
@@ -688,7 +688,8 @@ exe "hi! CursorLine"     .s:fmt_uopt   .s:fg_none   .s:bg_base02  .s:sp_base1
 exe "hi! ColorColumn"    .s:fmt_none   .s:fg_none   .s:bg_base02
 exe "hi! Cursor"         .s:fmt_none   .s:fg_base03 .s:bg_base0
 hi! link lCursor Cursor
-exe "hi! MatchParen"     .s:fmt_bold   .s:fg_red    .s:bg_base01
+"exe "hi! MatchParen"     .s:fmt_bold   .s:fg_red    .s:bg_base01
+exe "hi! MatchParen"     .s:fmt_revr  .s:bg_base00
 
 "}}}
 " vim syntax highlighting "{{{
