@@ -1,8 +1,8 @@
 function regen-prompt {
-	local wingding="%(?..%B%F{red})\$%(?..%b%f)"
-	PROMPT="%F{cyan}%n%f@%F{cyan}%m%f:%F{blue}%~%f$wingding "
-	local return_code="%(?..%F{red}%? ↵%f)"
-	RPROMPT="${return_code}"
+    local wingding="%(?..%{$fg[red]%})\$%(?..%{$reset_color%})"
+    PROMPT="%{$fg[cyan]%}%n%{$reset_color%}@%{$fg[cyan]%}%m%f:%{$fg[blue]%}%~%{$reset_color%}$wingding "
+    local return_code="%(?..%{$fg[red]%}[%?])%{$reset_color%}"
+    RPROMPT="${return_code}"
 }
 
 function change-title {}
@@ -17,7 +17,7 @@ for config_file (~/.dotfiles/zsh/*.zsh) source $config_file
 # The following lines were added by compinstall
 zstyle :compinstall filename "$HOME/.zshrc"
 
-autoload -Uz compinit
+autoload -U compinit
 compinit
 # End of lines added by compinstall
 
