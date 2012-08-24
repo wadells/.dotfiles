@@ -43,14 +43,12 @@ set incsearch     		" show search matches as you type
 nnoremap <silent> <Space> @=(foldlevel('.')?'za':"\<Space>")<CR>
 vnoremap <Space> zf
 
-" Uncomment the following to have Vim jump to the last position when
-" reopening a file
+" jump to the last position when reopening a file
 if has("autocmd")
   au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
 endif
 
-" Uncomment the following to have Vim load indentation rules and plugins
-" according to the detected filetype.
+" load indentation rules and plugins according to the detected filetype
 if has("autocmd")
 	filetype plugin indent on
 endif
