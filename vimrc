@@ -32,6 +32,11 @@ match TrailingSpace /\s\+$/
 " Spacing settings
 set shiftround    		" use shiftwidth with '<' and '>'
 set smarttab
+set tabstop=4
+set softtabstop=4
+set shiftwidth=4
+set smarttab
+set expandtab
 
 " Search tweaks
 set ignorecase    		" ignore case when searching
