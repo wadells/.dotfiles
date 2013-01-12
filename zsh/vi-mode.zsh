@@ -1,3 +1,6 @@
+# use vim as default editor
+export EDITOR="vim"
+
 # couldn't figure out how to get colors to work in the vim mode
 # prompt without this
 autoload -U colors && colors
