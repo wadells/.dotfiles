@@ -8,6 +8,10 @@ noremap   <Down>   <NOP>
 noremap   <Left>   <NOP>
 noremap   <Right>  <NOP>
 
+" easier indenting/dedenting of code blocks
+vnoremap < <gv
+vnoremap > >gv
+
 " Colors
 syntax enable
 set background=dark
@@ -47,6 +51,9 @@ set incsearch     		" show search matches as you type
 " Fold with spacebar
 nnoremap <silent> <Space> @=(foldlevel('.')?'za':"\<Space>")<CR>
 vnoremap <Space> zf
+
+" but don't fold a ton by default
+setlocal foldlevel=6
 
 " jump to the last position when reopening a file
 if has("autocmd")
