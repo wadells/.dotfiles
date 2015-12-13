@@ -12,14 +12,14 @@ MODE_INDICATOR="%{$fg[green]%}<<<%{$reset_color%}"
 RPROMPT_ORIG=$RPROMPT
 
 function zle-line-init zle-keymap-select {
-	RPROMPT="${${KEYMAP/vicmd/$MODE_INDICATOR}/(main|viins)/$RPROMPT_ORIG}"
-	zle reset-prompt
+    RPROMPT="${${KEYMAP/vicmd/$MODE_INDICATOR}/(main|viins)/$RPROMPT_ORIG}"
+    zle reset-prompt
 }
 
 # Accept RETURN in vi command mode.
 function accept_line {
-	RPROMPT="$RPROMP_ORIG"
-	builtin zle .accept-line
+    RPROMPT="$RPROMP_ORIG"
+    builtin zle .accept-line
 }
 
 zle -N zle-line-init
