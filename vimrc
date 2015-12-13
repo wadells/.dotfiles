@@ -1,3 +1,6 @@
+" kill crappy vi-isms
+set nocompatible
+
 " learn vim the hard way
 inoremap  <Up>     <NOP>
 inoremap  <Down>   <NOP>
