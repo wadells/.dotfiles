@@ -1,0 +1,4 @@
+!! No Capslock
+clear lock
+!! Replace Capslock with escape (woo vim!)
+keycode 0x42 = Escape
