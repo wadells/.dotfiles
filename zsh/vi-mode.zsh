@@ -10,14 +10,14 @@ autoload -U edit-command-line
 
 MODE_INDICATOR="%{$fg[green]%}<<<%{$reset_color%}"
 
-function zle-line-init zle-keymap-select {
+function zle-line-init zle-keymap-select () {
     RPROMPT_ORIG=$RPROMPT
     RPROMPT="${${KEYMAP/vicmd/$MODE_INDICATOR}/(main|viins)/$RPROMPT_ORIG}"
     zle reset-prompt
 }
 
 # Accept RETURN in vi command mode.
-function accept_line {
+function accept_line () {
     RPROMPT="$RPROMP_ORIG"
     builtin zle .accept-line
 }

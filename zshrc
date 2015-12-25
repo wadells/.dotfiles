@@ -1,13 +1,13 @@
-function regen-prompt {
+function regen-prompt () {
     local wingding="%(?..%{$fg[red]%})\$%(?..%{$reset_color%})"
     PROMPT="%{$fg[cyan]%}%n%{$reset_color%}@%{$fg[cyan]%}%m%f:%{$fg[blue]%}%~%{$reset_color%}$wingding "
     local return_code="%(?..%{$fg[red]%}[%?])%{$reset_color%}"
     RPROMPT="${return_code}"
 }
 
-function change-title {}
+function change-title () {}
 
-function precmd {
+function precmd () {
 	change-title
 	regen-prompt
 }
