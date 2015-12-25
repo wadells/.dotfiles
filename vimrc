@@ -27,7 +27,7 @@ set showmatch			" Show matching brackets.
 "set hidden			" Hide buffers when they are abandoned
 set number        		" always show line numbers
 set nowrap        		" don't wrap lines
-"set backspace=indent,eol,start	" allow backspacing over everything
+set backspace=indent,eol,start	" allow backspacing over everything
 set pastetoggle=<F2>		" hit <F2> to toggle paste mode
 set backupdir=/tmp		" store backups in /tmp
 set directory=/tmp		" store swap files in /tmp too
