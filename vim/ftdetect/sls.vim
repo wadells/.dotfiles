@@ -1,1 +1,1 @@
-autocmd BufNewFile,BufRead *.sls set filetype=sls
+autocmd BufRead,BufNewFile *.sls set filetype=sls

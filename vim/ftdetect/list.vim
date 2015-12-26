@@ -1,1 +1,1 @@
-autocmd BufNewFile,BufRead *.list,*.libl set filetype=list
+autocmd BufRead,BufNewFile *.list,*.libl set filetype=list
