@@ -5,6 +5,8 @@
     walts = with pkgs; buildEnv {
       name = "walts";
       paths = [
+        # system utils
+        xorg.xmodmap  # rebind capslock -> esc
 
         # cli
         ack
@@ -14,7 +16,6 @@
         mosh
         tmux
         tree
-        xorg.xmodmap  # rebind capslock -> esc
 
         # destop
         (chromium.override {
