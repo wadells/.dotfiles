@@ -2,12 +2,16 @@
 " Language:	Puppet
 " Maintainer:	Todd Zullinger <tmz@pobox.com>
 " Last Change:	2009 Aug 19
-" vim: set sw=4 sts=4:
 
 if exists("b:did_indent")
     finish
 endif
 let b:did_indent = 1
+
+" 2 space tabs
+setlocal shiftwidth=2
+setlocal softtabstop=2
+setlocal expandtab
 
 setlocal autoindent smartindent
 setlocal indentexpr=GetPuppetIndent()

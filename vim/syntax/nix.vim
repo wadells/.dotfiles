@@ -7,6 +7,12 @@ if exists("b:current_syntax")
   finish
 endif
 
+" Walt's addition, moved from ftplugin. Not really sure which file
+" this should go in, but it seemed to fit better with syntax than plugins.
+"
+" nix has keywords with hyphens in them
+setlocal iskeyword+=-
+
 syn keyword nixBoolean     true false
 syn keyword nixNull        null
 syn keyword nixRecKeyword  rec

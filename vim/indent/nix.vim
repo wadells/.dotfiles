@@ -8,6 +8,16 @@ if exists("b:did_indent")
 endif
 let b:did_indent = 1
 
+" 2 space tabs
+setlocal shiftwidth=2
+setlocal softtabstop=2
+setlocal expandtab
+
+" autocontinue comments
+setlocal comments=:#
+setlocal commentstring=#\ %s
+
+" indentation for everything else
 setlocal indentexpr=GetNixIndent()
 
 if exists("*GetNixIndent")
