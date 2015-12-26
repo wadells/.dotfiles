@@ -5,18 +5,26 @@
     walts = with pkgs; buildEnv {
       name = "walts";
       paths = [
+
+        # cli
+        ack
+        git
+        gnupg
+        irssi
+        mosh
+        tmux
+        tree
+        xorg.xmodmap  # rebind capslock -> esc
+
+        # destop
         (chromium.override {
           enablePepperFlash = true;
         })
-        gnupg
-        git
         inconsolata
-        irssi
-        mosh
-        ack
+
+        # languages
         python
-        tmux
-        tree
+
       ];
     };
   };
