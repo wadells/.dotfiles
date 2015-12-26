@@ -4,6 +4,11 @@
 " Last Change:  2009 Aug 19
 " vim: set sw=4 sts=4:
 
+" 2 space tabs
+setlocal shiftwidth=2
+setlocal softtabstop=2
+setlocal expandtab
+
 if exists("b:did_ftplugin")
     finish
 endif

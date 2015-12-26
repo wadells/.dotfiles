@@ -1,7 +1,7 @@
 " Python indent file
 " Language:	    Python
 " Maintainer:	    Eric Mc Sween <em@tomcom.de>
-" Original Author:  David Bustos <bustos@caltech.edu> 
+" Original Author:  David Bustos <bustos@caltech.edu>
 " Last Change:      2004 Jun 07
 
 " Only load this indent file when no other was loaded.
@@ -10,8 +10,11 @@ if exists("b:did_indent")
 endif
 let b:did_indent = 1
 
+setlocal softtabstop=4
+setlocal shiftwidth=4
 setlocal expandtab
-setlocal nolisp
+setlocal textwidth=80
+setlocal foldmethod=indent
 setlocal autoindent
 setlocal indentexpr=GetPythonIndent(v:lnum)
 setlocal indentkeys=!^F,o,O,<:>,0),0],0},=elif,=except
