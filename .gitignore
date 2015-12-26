@@ -1,3 +1,4 @@
 backup/
 irssi/*
 !irssi/solarized.theme
+vim/.netrwhist
