@@ -44,7 +44,7 @@ def prompt_backup():
     print("Would you like to make a backup of files that will be overwritten?")
     print("Backups will be made in: " + backup_dir)
     while True:
-        ans = raw_input("y/n/q(uit): ")
+        ans = input("y/n/q(uit): ")
         first_char = ans[0].lower()
         if (first_char == 'q'):
             sys.exit(0)
@@ -61,7 +61,7 @@ def main():
     if not os.path.exists(dotfiles_dir):
         error_msg = "Cannot install dotfiles: " + dotfiles_dir + \
                 " does not exist."
-        print >> sys.stderr, error_msg
+        print(error_msg, file=sys.stderr)
         sys.exit(2)
 
     (options, args) = parser.parse_args()
@@ -80,7 +80,7 @@ def main():
         else:
             delete(file)
         link(file)
-        print "intstalled ~/." + file
+        print("intstalled ~/." + file)
 
 
 if (__name__ == "__main__"):
