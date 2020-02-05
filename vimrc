@@ -63,6 +63,9 @@ if has("autocmd")
   au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
 endif
 
+" no go templates on new file creation
+let g:go_template_autocreate = 0
+
 " load indentation rules and plugins according to the detected filetype
 if has("autocmd")
 	filetype plugin indent on
