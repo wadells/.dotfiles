@@ -9,3 +9,6 @@ log=.log
 # for tmgr lists
 --type-set
 list=.list
+
+# for go vendoring
+--ignore-dir=vendor
