@@ -66,6 +66,9 @@ endif
 " no go templates on new file creation
 let g:go_template_autocreate = 0
 
+set spell spelllang=en_us
+hi SpellBad cterm=underline
+
 " load indentation rules and plugins according to the detected filetype
 if has("autocmd")
 	filetype plugin indent on
