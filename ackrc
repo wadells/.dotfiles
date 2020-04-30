@@ -10,3 +10,6 @@ log=.log
 
 # for go vendoring
 --ignore-dir=vendor
+
+# for python venvs
+--ignore-dir=venv
