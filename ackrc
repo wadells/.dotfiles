@@ -6,9 +6,7 @@
 --type-set
 log=.log
 
-# for tmgr lists
---type-set
-list=.list
+--type-set=md=.md
 
 # for go vendoring
 --ignore-dir=vendor
