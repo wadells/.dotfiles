@@ -65,6 +65,7 @@ endif
 
 " no go templates on new file creation
 let g:go_template_autocreate = 0
+let g:go_fmt_command = "goimports"
 
 set spell spelllang=en_us
 hi SpellBad cterm=underline
