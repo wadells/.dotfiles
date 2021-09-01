@@ -1,3 +1,6 @@
 [submodule "vim/pack/start/vim-go"]
 	path = vim/pack/walt/start/vim-go
 	url = https://github.com/fatih/vim-go/
+[submodule "vim/pack/walt/start/vim-terraform"]
+	path = vim/pack/walt/start/vim-terraform
+	url = git@github.com:hashivim/vim-terraform.git
