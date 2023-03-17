@@ -67,6 +67,9 @@ endif
 let g:go_template_autocreate = 0
 let g:go_fmt_command = "goimports"
 
+" format terraform upon save
+let g:terraform_fmt_on_save = 1
+
 set spell spelllang=en_us
 hi SpellBad cterm=underline
 
