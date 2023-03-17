@@ -12,8 +12,6 @@ function precmd () {
 	regen-prompt
 }
 
-for config_file (~/.dotfiles/zsh/*.zsh) source $config_file
-
 # The following lines were added by compinstall
 zstyle :compinstall filename "$HOME/.zshrc"
 
@@ -21,7 +19,12 @@ autoload -U compinit
 compinit
 # End of lines added by compinstall
 
+for config_file (~/.dotfiles/zsh/*.zsh) source $config_file
+
 # check for local configs that needn't be in the .dotfile repo
 if [ -f ~/.zshrc.local ]; then
 	source ~/.zshrc.local
 fi
+
+# Remove any duplicate path entries
+typeset -U PATH
